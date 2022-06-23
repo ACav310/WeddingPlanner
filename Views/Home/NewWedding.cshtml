@@ -1,0 +1,59 @@
+@model Wedding
+<div class="text-center d-flex justify-content-around">
+    <h1 class="display-4 bg-fade w-75 mx-auto" > Plan your <span class="text-primary">Wedding</span></h1>
+    <a href="/"><button class="btn mt-2 btn-danger p-2">Logout</button></a>
+</div>
+<div class="w-50 bg-fade p-2 mx-auto border rounded mt-5" >
+    <div class=" d-flex justify-content-between align-items-center">
+        <div>
+            <h4><span class="text-primary">Wedding Information:</span> </h4>
+        </div>
+    </div>
+        <form action="/add/wedding/process" method="post">
+            <div class="row">
+                <div class="col">
+                    <input asp-for="wedderOne"  class="form-control" placeholder="Bride or Groom #1">
+                    <span asp-validation-for="wedderOne" class="text-danger"></span>
+                </div>
+                <div class="col">
+                    <input asp-for="wedderTwo"  class="form-control" placeholder="Bride or Groom #2">
+                    <span asp-validation-for="wedderTwo" class="text-danger"></span>
+                    
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="p-2">
+                                <span class="text-primary">Where</span>: 
+                            </h5>
+                        </div>
+                        <div class="w-100">
+                            <input asp-for="Address" class="form-control" placeholder="Address">
+                            
+                        </div>
+                    </div>
+                </div>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <h5 class="p-2">
+                                <span class="text-primary">When</span>: 
+                            </h5>
+                        </div>
+                        <div class="w-100">
+                            <input type="date" class="form-control" asp-for="Date">
+                        </div>
+                    </div>
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+                <div class="col">
+                    <input type="submit" value="Add Wedding!" class="btn btn-primary w-100">
+                </div>
+            </div>
+        </form>
+</div>

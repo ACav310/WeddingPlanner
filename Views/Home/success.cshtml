@@ -1,0 +1,52 @@
+@model List<Wedding>
+
+<div class="text-center d-flex justify-content-around">
+    <h1 class="display-4 bg-fade w-75 mx-auto" > Welcome to <span class="text-primary">Wedding</span>Book, @ViewBag.LoggedinUser.FirstName!</h1>
+    <a href="/"><button class="btn mt-2 btn-danger p-2">Logout</button></a>
+</div>
+
+    <table class="table bg-fade mt-3">
+    <thead>
+        <tr>
+        <th scope="col">Wedding</th>
+        <th scope="col">Date</th>
+        <th scope="col">Guest</th>
+        <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Wedding w in Model)
+        {
+            <tr>
+                <td><a href="/wedding/@w.WeddingId">@w.wedderOne & @w.wedderTwo</a></td>
+                <td>@w.Date.ToLongDateString()</td>
+                <td>@w.Guests.Count</td>
+                <td class="d-flex justify-content-between">
+                    <div>
+                        @if(w.Guests.Any(a=>a.UserId == Context.Session.GetInt32("user")))
+                        {
+                            <a href="/leave/wedding/@w.WeddingId"><button class="btn btn-warning">UnRSVP</button></a>
+                        } else {
+                            <a href="/join/wedding/@w.WeddingId"><button class="btn btn-primary">RSVP</button></a>
+                        }
+                    </div>
+                    <div>
+                        @if(w.UserId == Context.Session.GetInt32("user"))
+                        {
+                            <a href="/delete/@w.WeddingId"><button class="btn btn-danger">Delete</button></a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+
+
+
+
+
+<div>
+    <a href="new/wedding"><button class="btn btn-primary">Add a Wedding ❤️</button></a>
+</div>

@@ -1,0 +1,20 @@
+<div class="text-center d-flex justify-content-around">
+    <h1 class="display-4 bg-fade w-75 mx-auto" >@ViewBag.oneWedding.wedderOne and @ViewBag.oneWedding.wedderTwo's Wedding</h1>
+    <a href="/"><button class="btn mt-2 btn-danger p-2">Logout</button></a>
+</div>
+
+<div class="text-center bg-fade w-50 mx-auto">
+    <h3>Date : <span class="text-primary">@ViewBag.oneWedding.Date.ToLongDateString()</span></h3>
+</div>
+
+<div class="bg-fade w-50 p-2 justify-content-around mx-auto">
+    <h2>Guests:</h2>
+    <ul>
+        @foreach (var g in @ViewBag.oneWedding.Guests)
+        {
+            <li><h3 class="text-primary">
+@g.User.FirstName @g.User.LastName
+            </h3></li>
+        }
+    </ul>
+</div>
